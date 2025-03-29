@@ -1,0 +1,27 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sc4s-etc
+  namespace: sc4s
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  storageClassName: ontap-gold
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sc4s-var
+  namespace: sc4s
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ontap-gold

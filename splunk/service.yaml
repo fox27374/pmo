@@ -5,7 +5,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: splunk
-  name: splunk-web
+  name: splunk-web-svc
   namespace: splunk
 spec:
   ports:
@@ -25,7 +25,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: splunk
-  name: splunk-hec
+  name: splunk-hec-svc
   namespace: splunk
 spec:
   ports:

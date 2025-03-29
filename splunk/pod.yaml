@@ -4,27 +4,35 @@ metadata:
   creationTimestamp: null
   labels:
     app: splunk
-  name: splunk2
+  name: splunk
   namespace: splunk
-  annotations:
-    openshift.io/scc: scc-splunk
 spec:
   containers:
   - image: splunk/splunk:9.4
-    name: splunk2
+    name: splunk
     envFrom:
     - secretRef:
         name: splunk-password
     - configMapRef:
         name: splunk-env
     volumeMounts:
+    - mountPath: /opt/splunk/etc
+      name: splunk-etc
     - mountPath: /opt/splunk/var
       name: splunk-var
+    - mountPath: /tmp/defaults
+      name: splunk-default
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
   volumes:
+  - name: splunk-etc
+    persistentVolumeClaim:
+      claimName: splunk-etc
   - name: splunk-var
     persistentVolumeClaim:
       claimName: splunk-var
+  - name: splunk-default
+    configMap:
+      name: splunk-default
 status: {}

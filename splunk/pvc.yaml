@@ -1,0 +1,27 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: splunk-etc
+  namespace: splunk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: ontap-gold
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: splunk-var
+  namespace: splunk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: ontap-gold
